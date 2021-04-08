@@ -1,7 +1,7 @@
 # This list of imports is likely incomplete --- add anything you need.
 # TODO: Your code here.
 import torch.nn as nn
-
+#HEYYYYYY WE GOT THISSSS SCREW YOU NLPPPP 
 
 class RNN(nn.Module):
     def __init__(self, embedding_matrix, hidden_size,
