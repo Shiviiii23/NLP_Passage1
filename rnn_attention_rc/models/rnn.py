@@ -42,11 +42,11 @@ class RNN(nn.Module):
                                              requires_grad=False)
         # Make a GRU to encode the passage. Note that batch_first=True.
         # TODO: Your code here.
-        self.passage_gru = nn.GRU(num_embedding_words, hidden_size, embedding_dim, batch_first = True)
+        self.passage_gru = nn.GRU(self.num_embedding_words, hidden_size, embedding_dim, batch_first = True)
         # Make a GRU to encode the question. Note that batch_first=True.
         # self.passage_gru = nn.GRU(self.embedding_dim, hidden_size, batch_first = True, bidirectional = True, dropout = dropout)
         # TODO: Your code here.
-        self.question_gru = nn.GRU(num_embedding_words, hidden_size, embedding_dim, batch_first = True)
+        self.question_gru = nn.GRU(self.num_embedding_words, hidden_size, embedding_dim, batch_first = True)
         # self.question_gru = nn.GRU(self.embedding_dim, hidden_size, batch_first = True, bidirectional = True, dropout = dropout)
         # Affine transform for predicting start index.
         # TODO: Your code here.
