@@ -1,7 +1,7 @@
 # This list of imports is likely incomplete --- add anything you need.
 # TODO: Your code here.
 import torch.nn as nn
-#HEYYYYYY WE GOT THISSSS SCREW YOU NLPPPP 
+ 
 
 class RNN(nn.Module):
     def __init__(self, embedding_matrix, hidden_size,
@@ -44,17 +44,20 @@ class RNN(nn.Module):
         # TODO: Your code here.
         self.passage_gru = nn.GRU(num_embedding_words, hidden_size, embedding_dim, batch_first = True)
         # Make a GRU to encode the question. Note that batch_first=True.
+        # self.passage_gru = nn.GRU(self.embedding_dim, hidden_size, batch_first = True, bidirectional = True, dropout = dropout)
         # TODO: Your code here.
         self.question_gru = nn.GRU(num_embedding_words, hidden_size, embedding_dim, batch_first = True)
+        # self.question_gru = nn.GRU(self.embedding_dim, hidden_size, batch_first = True, bidirectional = True, dropout = dropout)
         # Affine transform for predicting start index.
         # TODO: Your code here.
-        self.start_output_projection = nn.Linear(3 * self.embedding_dim, 1)
+        self.start_output_projection = nn.Linear(6 * self.embedding_dim, 1)
         # Affine transform for predicting end index.
         # TODO: Your code here.
-        self.end_output_projection = nn.Linear(3 * self.embedding_dim, 1)
+        self.end_output_projection = nn.Linear(6 * self.embedding_dim, 1)
         # Dropout layer
         # TODO: Your code here.
         self.dropout = dropout
+        #embed dropout layer within 
         # Stores the number of gradient updates performed.
         self.global_step = 0
 
@@ -279,9 +282,9 @@ class RNN(nn.Module):
         # TODO: Your code here. Remove the NotImplementedError below.
         
         return {
-            "start_logits":,
-            "end_logits":,
-            "softmax_start_logits":,
-            "softmax_end_logits":,
+            "start_logits": start_logits,
+            "end_logits": end_logits,
+            "softmax_start_logits": softmax_start_logits,
+            "softmax_end_logits": softmax_end_logits,
         }
         # raise NotImplementedError
