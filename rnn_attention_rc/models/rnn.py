@@ -1,7 +1,7 @@
 # This list of imports is likely incomplete --- add anything you need.
 # TODO: Your code here.
 import torch.nn as nn
-from allennlp.nn.util import replace_masked_values, masked_log_softmax
+from allennlp.nn.util import replace_masked_values, masked_log_softmax, sort_batch_by_length
 import torch
 
 class RNN(nn.Module):
