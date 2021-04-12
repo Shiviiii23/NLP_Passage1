@@ -247,14 +247,14 @@ class RNN(nn.Module):
         # Hint: allennlp.nn.util.replace_masked_values might be helpful.
         # Shape: ?
         # TODO: Your code here.
-        start_logits = allennlp.nn.util.replace_masked_values(start_logits, passage_mask, -1e7)
+        start_logits = replace_masked_values(start_logits, passage_mask, -1e7)
 
         # 5.3. Apply a padding-aware log-softmax to normalize.
         # This tensor is your softmax_start_logits.
         # Hint: allennlp.nn.util.masked_log_softmax might be helpful.
         # Shape: ?
         # TODO: Your code here.
-        softmax_start_logits = allennlp.nn.util.masked_log_softmax(start_logits, passage_mask)
+        softmax_start_logits = masked_log_softmax(start_logits, passage_mask)
 
         # Part 6: Compute logits for answer end index.
 
@@ -269,14 +269,14 @@ class RNN(nn.Module):
         # Hint: allennlp.nn.util.replace_masked_values might be helpful.
         # Shape: ?
         # TODO: Your code here.
-        end_logits = allennlp.nn.util.replace_masked_values(end_logits, passage_mask, -1e7)
+        end_logits = replace_masked_values(end_logits, passage_mask, -1e7)
 
         # 6.3. Apply a padding-aware log-softmax to normalize.
         # This tensor is your softmax_end_logits.
         # Hint: allennlp.nn.util.masked_log_softmax might be helpful.
         # Shape: ?
         # TODO: Your code here.
-        softmax_end_logits = allennlp.nn.util.masked_log_softmax(end_logits, passage_mask)
+        softmax_end_logits = masked_log_softmax(end_logits, passage_mask)
 
         # Part 7: Output a dictionary with the start_logits, end_logits,
         # softmax_start_logits, softmax_end_logits.
