@@ -214,8 +214,8 @@ class AttentionRNN(nn.Module):
         # Shape: ?
         # TODO: Your code here.
 
-        combined_x_q = torch.cat([restoredp, tiled_encoded_q,
-                                  restoredp * tiled_encoded_q], dim=-1)
+        combined_x_q = torch.cat([tiled_encoded_p, tiled_encoded_q,
+                                  tiled_encoded_p * tiled_encoded_q], dim=-1)
 
         # 4.4. Apply affine transform to attention input to get
         # attention logits. You will need to slightly reshape it
@@ -257,7 +257,7 @@ class AttentionRNN(nn.Module):
         # Shape after affine transformation: ?
         # Shape after editing shape: ?
         # TODO: Your code here.
-        start_logits = self.start_output_projection(combined_x_q).squeeze(-1)
+        start_logits = self.start_output_projection(combined_rep).squeeze(-1)
 
         # 6.2. Replace the masked values so they have a very low score (-1e7).
         # This tensor is your start_logits.
