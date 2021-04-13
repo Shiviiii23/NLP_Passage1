@@ -195,7 +195,7 @@ class AttentionRNN(nn.Module):
         # Shape: ?
         # TODO: Your code here.
         #get the max passage size by getting size of passage mask (2nd value)
-        maxp_size = (int)passage_mask.size()
+        maxp_size = int(passage_mask.size())
         tiled_encoded_q = question_unpacked.unsqueeze(dim=1).expand(
             -1, maxp_size, -1, -1)
         # 4.2. Expand the encoded passage to shape suitable for attention.
@@ -204,7 +204,7 @@ class AttentionRNN(nn.Module):
         # might be useful.
         # Shape: ?
         # TODO: Your code here.
-        maxq_size = (int)question_mask.size()
+        maxq_size = int(question_mask.size())
         tiled_encoded_p = passage_unpacked.unsqueeze(dim=1).expand(-1, -1, maxq_size, -1)
 
         # 4.3. Build attention_input. This is the tensor passed through
