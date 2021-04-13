@@ -1,6 +1,7 @@
 # This list of imports is likely incomplete --- add anything you need.
 # TODO: Your code here.
 import torch.nn as nn
+from allennlp.nn.util import replace_masked_values, masked_log_softmax, sort_batch_by_length, masked_softmax
 import torch
 
 class AttentionRNN(nn.Module):
@@ -230,7 +231,7 @@ class AttentionRNN(nn.Module):
         # Hint: allennlp.nn.util.last_dim_softmax might be helpful.
         # Shape: ?
         # TODO: Your code here.
-        masked_softmax = allennlp.nn.util.masked_softmax(attention_logits, question_mask)
+        masked_softmax = masked_softmax(attention_logits, question_mask)
 
         # 4.6. Use the attention weights to get a weighted average
         # of the RNN output from encoding the question for each
