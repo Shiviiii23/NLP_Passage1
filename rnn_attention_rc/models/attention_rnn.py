@@ -24,6 +24,11 @@ class AttentionRNN(nn.Module):
         self.init_arguments = locals()
         self.init_arguments.pop("self")
         self.init_arguments.pop("__class__")
+        self.embedding_matrix = embedding_matrix
+        self.hidden_size = hidden_size
+        self.dropout = dropout
+        self.num_embedding_words = embedding_matrix.size(0)
+        self.embedding_dim = embedding_matrix.size(1)
         super(AttentionRNN, self).__init__()
 
         # Create Embedding object
