@@ -231,7 +231,7 @@ class AttentionRNN(nn.Module):
         # Hint: allennlp.nn.util.last_dim_softmax might be helpful.
         # Shape: ?
         # TODO: Your code here.
-        masked_softmax = masked_softmax(attention_logits, question_mask)
+        mask_softmax = masked_softmax(attention_logits, question_mask)
 
         # 4.6. Use the attention weights to get a weighted average
         # of the RNN output from encoding the question for each
@@ -239,7 +239,7 @@ class AttentionRNN(nn.Module):
         # Hint: torch.bmm might be helpful.
         # Shape: ?
         # TODO: Your code here.
-        weighted_average = torch.bmm(masked_softmax, restoredq)
+        weighted_average = torch.bmm(mask_softmax, restoredq)
 
         # Part 5: Combine the passage and question representations by
         # concatenating the passage and question representations with
