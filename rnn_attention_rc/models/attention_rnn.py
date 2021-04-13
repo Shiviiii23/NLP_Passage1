@@ -1,7 +1,7 @@
 # This list of imports is likely incomplete --- add anything you need.
 # TODO: Your code here.
 import torch.nn as nn
-
+import torch
 
 class AttentionRNN(nn.Module):
     def __init__(self, embedding_matrix, hidden_size,
@@ -28,7 +28,7 @@ class AttentionRNN(nn.Module):
         self.hidden_size = hidden_size
         self.dropout = dropout
         self.num_embedding_words = embedding_matrix.size(0)
-        self.embedding_dim = embedding_matrix.size(1)
+        self.embedding_dim = embedding_matrix.size(1)`1`
         super(AttentionRNN, self).__init__()
 
         # Create Embedding object
