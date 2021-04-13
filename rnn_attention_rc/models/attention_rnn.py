@@ -279,7 +279,7 @@ class AttentionRNN(nn.Module):
         # Shape after affine transformation: ?
         # Shape after editing shape: ?
         # TODO: Your code here.
-        end_logits = self.end_output_projection(combined_x_q).squeeze(-1)
+        end_logits = self.end_output_projection(combined_rep).squeeze(-1)
 
         # 7.2. Replace the masked values so they have a very low score (-1e7).
         # This tensor is your end_logits.
